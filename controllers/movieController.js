@@ -20,3 +20,11 @@ const updateMovie = (req, res) => {
 const deleteMovie = (req, res) => {
     res.send("delete movie")
 }
+
+module.exports = {
+    getAllMovies,
+    getMovieById,
+    addMovie,
+    updateMovie,
+    deleteMovie
+}
