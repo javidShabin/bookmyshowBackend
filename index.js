@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require("express");
+const movieRouter = require('./routes/movieRouter')
 const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
@@ -7,6 +8,8 @@ const PORT = 4000;
 
 app.use(cors());
 app.use(express.json());
+
+app.use('/movies', movieRouter)
 
 // Connect backend with database
 async function main() {
