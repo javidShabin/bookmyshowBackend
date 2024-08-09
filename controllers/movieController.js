@@ -22,7 +22,8 @@ const updateMovie = (req, res) => {
     res.send("update movie")
 }
 // Delete movie
-const deleteMovie = (req, res) => {
+const deleteMovie = async (req, res) => {
+    await Movie.findByIdAndDelete(req.params.movieId)
     res.send("delete movie")
 }
 
