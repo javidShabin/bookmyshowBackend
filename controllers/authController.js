@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt')
 const User = require("../models/userModel");
+const jwt = require('jsonwebtoken');
 
 const login = async (req, res) => {
     const {email, password} = req.body;
@@ -13,7 +14,8 @@ const login = async (req, res) => {
     const passwordsMatch = bcrypt.compareSync(password, user.password);
     
     if (passwordsMatch) {
-        res.send("Logged in")
+        const token = jwt.sign({_id: user._id, email: user.email}, process.env.SECRET_KEY);
+        res.json(token)
     }else{
         res.status(401).send("Unauthorised accsess!")
     }
