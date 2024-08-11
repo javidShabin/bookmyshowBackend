@@ -30,6 +30,15 @@ const login = async (req, res) => {
   }
 };
 
+const verifyLogin = async (req, res) => {
+    if (req.cookies.token) {
+        res.send("Logged in")
+    }else{
+        res.status(401).send("Not logged in")
+    }
+}
+
 module.exports = {
   login,
+  verifyLogin
 };
